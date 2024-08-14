@@ -36,7 +36,7 @@ INSERT INTO agencies VALUES
 	('29', '210-627-0073', 'llethlays@macromedia.com', 'Browsecat', '02 Londonderry Center', 'San Antonio', 'Texas', '19823'),
 	('30', '323-686-7103', 'rgirathst@auda.org.au', 'Agivu', '87902 Schurz Junction', 'North Hollywood', 'California', '15572'),
 	('31', '812-180-3553', 'aealdenu@reference.com', 'Blogtags', '2 Glacier Hill Avenue', 'Terre Haute', 'Indiana', '15017'),
-	('32', '260-485-0314', 'aforringtonv@merriam-webster.com', 'Yabox', '470 Westend Drive', 'Fort Wayne', 'Indiana', '14944'),
+	('32', '260-485-0314', 'aforringtonv@merriam-webster.com', 'Petstag', '470 Westend Drive', 'Fort Wayne', 'Indiana', '14944'),
 	('33', '202-194-7812', 'cstokesw@comcast.net', 'Edgetag', '370 Kennedy Point', 'Washington', 'District of Columbia', '12780'),
 	('34', '786-901-1881', 'hjosifovicx@digg.com', 'Rooxo', '50886 Prentice Street', 'Miami', 'Florida', '13402'),
 	('35', '313-841-3567', 'rtaddy@alexa.com', 'Photofeed', '14734 Springview Parkway', 'Detroit', 'Michigan', '16082'),
