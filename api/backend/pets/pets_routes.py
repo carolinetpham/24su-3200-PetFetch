@@ -103,4 +103,16 @@ def get_pet_contacts():
     the_response = make_response(theData)
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
+    return the_response    
+
+@pets.route('/pets/<petID>', methods=['DELETE'])
+def delete_pet(petID):
+    current_app.logger.info('DELETE /pets/<petID> route')
+    cursor = db.get_db().cursor()
+    cursor.execute('DELETE FROM pets WHERE petID = %s', (petID,))
+    db.get_db().commit()
+
+    the_response = make_response('Pet deleted!')
+    the_response.status_code = 200
+    the_response.mimetype = 'text/plain'
     return the_response
