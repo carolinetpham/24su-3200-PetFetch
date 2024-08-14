@@ -3,6 +3,8 @@ logger = logging.getLogger(__name__)
 import streamlit as st
 from modules.nav import SideBarLinks
 import requests
+import pandas as pd
+import altair as alt
 
 st.set_page_config(layout = 'wide')
 
@@ -11,18 +13,35 @@ SideBarLinks()
 st.title('Most commonly surrendered pets')
 
 st.write('\n\n')
-st.write('## Model 1 Maintenance')
+st.write('### Hi Alex, here you can see the animal breeds that are surrendered to resuces the most.')
+st.write('\n\n')
+st.write('#### View breeds by species')
 
-st.button("Train Model 01", 
-            type = 'primary', 
-            use_container_width=True)
+# Fetching the data from the api
+data = {} 
+try:
+  data = requests.get('http://api:4000/a/mostsurrendered').json()
+except:
+  st.write("Could not connect to database to retrieve agencies!")
 
-st.button('Test Model 01', 
-            type = 'primary', 
-            use_container_width=True)
+df = pd.DataFrame(data)
 
-if st.button('Model 1 - get predicted value for 10, 25', 
-             type = 'primary',
-             use_container_width=True):
-  results = requests.get('http://api:4000/c/prediction/10/25').json()
-  st.dataframe(results)
+st.bar_chart(df, x="species", y="amount_surrendered", x_label="Species", y_label="Amount Surrendered", color="breed", width=1000, stack=False, use_container_width=False)
+
+st.write('\n\n')
+st.write('#### View breeds')
+
+# Create the chart with explicitly specified data types
+chart = alt.Chart(df).mark_bar().encode(
+    x=alt.X('amount_surrendered', axis=alt.Axis(title='Amount Surrendered')),
+    y=alt.Y('breed', axis=alt.Axis(title='Breed')),
+    tooltip=[
+        alt.Tooltip('breed', title='Breed'),
+        alt.Tooltip('amount_surrendered', title='Amount Surrendered')
+    ]
+).properties(
+    width=1100,
+    height=800
+)
+
+st.write(chart)
