@@ -34,5 +34,5 @@ st.pyplot(plt)
 
 # Displaying the chart after the graph
 st.write("### Chart of all Adoption Data")
-df = df.style.map(lambda x: f"background-color: {'green' if x=='Adoption Complete' else 'yellow' if x=='In Progress' else 'red'}", subset='adoptionStatus')
+df = df.style.map(lambda x: f"background-color: {'lightgreen' if x=='Adoption Complete' else 'gold' if x=='In Progress' else 'indianred'}", subset='adoptionStatus')
 st.write(df)
