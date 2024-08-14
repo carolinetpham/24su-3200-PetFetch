@@ -3,8 +3,8 @@ logger = logging.getLogger(__name__)
 import streamlit as st
 from modules.nav import SideBarLinks
 import requests
-import matplotlib.pyplot as plt
 import pandas as pd
+import altair as alt
 
 st.set_page_config(layout = 'wide')
 
@@ -25,6 +25,8 @@ except:
 df = pd.DataFrame(data)
 
 # Sorting the data
-df_sorted = df.sort_values(by='Total_Adoptions')
-
-st.bar_chart(df_sorted, x="agencyName", y="Total_Adoptions", color="#89CFF0", horizontal=True)
+st.write(alt.Chart(df).mark_bar().encode(
+    y=alt.Y('agencyName', sort=None),
+    x='Total_Adoptions',
+    tooltip=['agencyName', 'Total_Adoptions']
+))
