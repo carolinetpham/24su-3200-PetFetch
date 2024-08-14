@@ -11,7 +11,7 @@ INSERT INTO agencies VALUES
 	('4', '740-370-5233', 'moshesnan3@facebook.com', 'Snaptags', '8253 Westport Drive', 'Columbus', 'Ohio', '17557'),
 	('5', '559-572-4613', 'kallenson4@nydailynews.com', 'Buzzbean', '52 Algoma Plaza', 'Fresno', 'California', '12509'),
 	('6', '540-451-6886', 'fmantrip5@rakuten.co.jp', 'Vimbo', '10932 Glendale Avenue', 'Roanoke', 'Virginia', '15446'),
-	('7', '512-680-9821', 'korrey6@pcworld.com', 'Yabox', '56 Loftsgordon Center', 'Austin', 'Texas', '11378'),
+	('7', '512-680-9821', 'korrey6@pcworld.com', 'Yaboo', '56 Loftsgordon Center', 'Austin', 'Texas', '11378'),
 	('8', '336-133-4199', 'jbus7@independent.co.uk', 'Realpoint', '658 Hagan Street', 'High Point', 'North Carolina', '12431'),
 	('9', '615-371-9186', 'thumphrys8@un.org', 'Fivechat', '5 Sloan Hill', 'Nashville', 'Tennessee', '16073'),
 	('10', '405-953-5257', 'drogliero9@google.co.uk', 'Kwimbee', '7911 Meadow Ridge Way', 'Oklahoma City', 'Oklahoma', '15561'),
