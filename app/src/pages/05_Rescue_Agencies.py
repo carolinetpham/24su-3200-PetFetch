@@ -10,6 +10,7 @@ import requests
 import numpy
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
+import altair as alt
 
 SideBarLinks()
 
@@ -21,7 +22,7 @@ st.markdown("# Pet Agencies Near 02284")
 
 # You can access the session state to make a more customized/personalized app experience
 st.write(f"### Hi, {st.session_state['first_name']}!")
-st.write('This is a list of pets that are alive and available for adoption.')
+st.write('This is a list of pet agencies that are alive and available for adoption.')
 agencies = requests.get('http://api:4000/a/agencies').json()
 agencies_df = st.dataframe(agencies)
 
@@ -38,12 +39,23 @@ def find_distance_between(zip1, zip2):
     return distance
 
 def handleClick():
-    df = pd.DataFrame(agencies)
-    distances = []
-    for index, row in df.iterrows():
-        distances.append(find_distance_between(zip_from, row['zip']))
-    df['distance'] = distances
-    df.sort_values('distance')
-    agencies_df = st.dataframe(df)
+    try: 
+        df = pd.DataFrame(agencies)
+        distances = []
+        for index, row in df.iterrows():
+            distances.append(find_distance_between(zip_from, row['zip']))
+        df['distance'] = distances
+        last_column = df.columns[-1]
+        df = df[[last_column] + list(df.columns[:-1])]        
+        st.session_state['agencies_df'] = df
+    except:
+        pass
 
-btn = st.button('next', key='next', on_click=handleClick)
+btn = st.button('search', key='search', on_click=handleClick)
+
+st.write(f"Agencies by distance from {zip_from}: ")
+
+try: 
+    st.dataframe(st.session_state['agencies_df'])
+except:
+    pass
