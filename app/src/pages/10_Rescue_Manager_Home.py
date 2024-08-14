@@ -14,7 +14,7 @@ st.write('')
 st.write('')
 st.write('### What would you like to do today?')
 
-if st.button('Update Pet Medical History', 
+if st.button('Add To A Pet\'s Medical History', 
              type='primary',
              use_container_width=True):
   st.switch_page('pages/11_Manager_Med_His_View.py')

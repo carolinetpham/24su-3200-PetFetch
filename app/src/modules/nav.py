@@ -19,7 +19,7 @@ def AdopterPageNav():
 ## ------------------------ rescue_manager role ------------------------
 def RescueManagerPageNav():
     st.sidebar.page_link("pages/10_Rescue_Manager_Home.py", label="Rescue Manager Home", icon='💼')
-    st.sidebar.page_link("pages/11_Manager_Med_His_View.py", label="Update Medical History", icon='📈')
+    st.sidebar.page_link("pages/11_Manager_Med_His_View.py", label="Add Medical History", icon='📈')
     st.sidebar.page_link("pages/14_Manager_Pet_Database.py", label="Edit Pet Data", icon='🐱')
     st.sidebar.page_link("pages/13_Manager_Adoption_View.py", label="View Adoption Data", icon='🙈')
 
