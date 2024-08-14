@@ -26,7 +26,7 @@ def RescueManagerPageNav():
 #### ------------------------ researcher Role ------------------------
 def ResearcherPageNav():
     st.sidebar.page_link("pages/20_Researcher_Home.py", label="Researcher Home", icon='🥼')
-    st.sidebar.page_link("pages/21_Least_Adoptions.py", label='Pets with Least Adoptions', icon='😿')
+    st.sidebar.page_link("pages/21_Least_Adoptions.py", label='Total Adoptions by Agency', icon='😿')
     st.sidebar.page_link("pages/22_Least_Interest.py", label='Pets with Least Interest', icon='📉')
     st.sidebar.page_link("pages/23_Most_Surrendered.py", label='Most Surrendered Pets', icon='📊')
 
