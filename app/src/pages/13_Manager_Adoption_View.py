@@ -14,8 +14,8 @@ SideBarLinks()
 st.write("# View All Adoption Data")
 adoption_data = requests.get('http://api:4000/adp/adoptions').json()
 df = pd.DataFrame(adoption_data)
-df = df[['name', 'petID', 'firstName', 'lastName', 'adopterID', 'email', 'phone', 'adoption_date',\
-        'adoptionID', 'adoptionStatus']]
+df = df[[ 'adoptionStatus','name', 'petID', 'firstName', 'lastName', 'adopterID', 'email', 'phone', 'adoption_date',\
+        'adoptionID']]
 df.rename(columns={'name': 'Pet Name'}, inplace=True)
 
 st.write("### Adoption Status Tracker")
@@ -34,4 +34,5 @@ st.pyplot(plt)
 
 # Displaying the chart after the graph
 st.write("### Chart of all Adoption Data")
+df = df.style.map(lambda x: f"background-color: {'green' if x=='Adoption Complete' else 'yellow' if x=='In Progress' else 'red'}", subset='adoptionStatus')
 st.write(df)
