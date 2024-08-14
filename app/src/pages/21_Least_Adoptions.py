@@ -10,10 +10,10 @@ st.set_page_config(layout = 'wide')
 
 SideBarLinks()
 
-st.title('Rescue Agencies with Least Adoptions')
+st.title('Total Adoptions by Agency')
 
 st.write('\n\n')
-st.write('### Hi Alex, here are the agencies with the least adoptions.')
+st.write('### Hi Alex, here you can see the agencies with the least adoptions.')
 
 # Fetching the data from the api
 data = {} 
@@ -25,8 +25,13 @@ except:
 df = pd.DataFrame(data)
 
 # Sorting the data
-st.write(alt.Chart(df).mark_bar().encode(
-    y=alt.Y('agencyName', sort=None),
-    x='Total_Adoptions',
-    tooltip=['agencyName', 'Total_Adoptions']
-))
+st.write(
+  alt.Chart(df).mark_bar(color='#89CFF0').encode(
+    y=alt.Y('agencyName', axis=alt.Axis(title='Agency Name'), sort=None),
+    x=alt.X('totalAdoptions', axis=alt.Axis(title='Number of Adoptions')),
+    tooltip=['agencyName', 'totalAdoptions']
+  ).properties(
+    width=1100,
+    height=800
+   )
+)
