@@ -10,7 +10,7 @@ st.markdown (
     """
     This is the application for BarkFontenot's team project!
 
-    Our app PetFetch, a Petalytics application, is designed to help pet rescue agencies, adopters, and researchers!
+    Our app PetFetch, a Petalytics application, is designed to to centralize animal rescue data to expand the reach of animal rescues and streamline adoption processes.
     
     """
         )

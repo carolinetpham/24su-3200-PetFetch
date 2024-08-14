@@ -32,7 +32,7 @@ pet_ids = [pet['petID'] for pet in pets]
 # Create a select box for petID
 selected_pet_id = st.selectbox('Select Pet ID to delete:', pet_ids)
 
-# Workaround to get a session state
+# Workaround to get a session state to maintain state between reruns
 if 'delete' not in st.session_state:
     st.session_state.delete = False
 

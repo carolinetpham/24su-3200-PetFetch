@@ -14,7 +14,7 @@ st.write('')
 st.write('')
 st.write('### What would you like to do today?')
 
-if st.button('View Pet Data to View Options', 
+if st.button('View Pet Data To View Options', 
              type='primary',
              use_container_width=True):
   st.switch_page('pages/01_Pet_Data_Viz.py')

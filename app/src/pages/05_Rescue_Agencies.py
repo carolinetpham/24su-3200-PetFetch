@@ -18,11 +18,11 @@ SideBarLinks()
 add_logo("assets/logo.png", height=400)
 
 # set up the page
-st.markdown("# Pet Agencies Near 02284")
+st.markdown("# Find Pet Agencies Near You")
 
 # You can access the session state to make a more customized/personalized app experience
 st.write(f"### Hi, {st.session_state['first_name']}!")
-st.write('This is a list of pet agencies that are alive and available for adoption.')
+st.write('This is a list of pet agencies that have pets available for adoption.')
 agencies = requests.get('http://api:4000/a/agencies').json()
 agencies_df = st.dataframe(agencies)
 

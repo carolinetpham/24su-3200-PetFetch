@@ -24,7 +24,7 @@ if st.button('Edit Pet Data',
              use_container_width=True):
   st.switch_page('pages/14_Manager_Pet_Database.py')
 
-if st.button("View Status of Pending Adoptions",
+if st.button("View Status Of Pending Adoptions",
              type='primary',
              use_container_width=True):
   st.switch_page('pages/13_Manager_Adoption_View.py')

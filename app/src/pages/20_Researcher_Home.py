@@ -11,12 +11,12 @@ SideBarLinks()
 
 st.title('Researcher Home Page')
 
-if st.button('View Adoption Sites with Least Adoptions', 
+if st.button('View Adoption Sites With Least Adoptions', 
              type='primary',
              use_container_width=True):
   st.switch_page('pages/21_Least_Adoptions.py')
 
-if st.button('View Pets with Least Interest', 
+if st.button('View Pets With Least Interest', 
              type='primary',
              use_container_width=True):
   st.switch_page('pages/22_Least_Interest.py')
