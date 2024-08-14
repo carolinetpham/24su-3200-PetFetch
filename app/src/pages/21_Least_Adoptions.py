@@ -27,6 +27,6 @@ df = pd.DataFrame(data)
 # Sorting the data
 st.write(alt.Chart(df).mark_bar().encode(
     y=alt.Y('agencyName', sort=None),
-    x='Total_Adoptions',
-    tooltip=['agencyName', 'Total_Adoptions']
+    x='totalAdoptions',
+    tooltip=['agencyName', 'totalAdoptions']
 ))

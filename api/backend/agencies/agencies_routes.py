@@ -52,12 +52,12 @@ def pet_agencies():
 
     cursor = db.get_db().cursor()
     theQuery = '''
-      SELECT ag.agencyName, COUNT(ad.adoptionID) AS Total_Adoptions
+      SELECT ag.agencyName, COUNT(ad.adoptionID) AS totalAdoptions
       FROM agencies ag
         LEFT JOIN pet_agencies pa on ag.agencyID = pa.agencyID
         LEFT JOIN adoptions ad on pa.petID = ad.petID
       GROUP BY ag.agencyID
-      ORDER BY Total_Adoptions
+      ORDER BY totalAdoptions
     '''
     cursor.execute(theQuery)
     theData = cursor.fetchall()
