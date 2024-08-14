@@ -19,10 +19,10 @@ if st.button('Update Pet Medical History',
              use_container_width=True):
   st.switch_page('pages/11_Manager_Med_His_View.py')
 
-if st.button('Put up a Pet for Adoption', 
+if st.button('Edit Pet Data', 
              type='primary',
              use_container_width=True):
-  st.switch_page('pages/12_Manager_Adoption_Add.py')
+  st.switch_page('pages/14_Manager_Pet_Database.py')
 
 if st.button("View Status of Pending Adoptions",
              type='primary',
