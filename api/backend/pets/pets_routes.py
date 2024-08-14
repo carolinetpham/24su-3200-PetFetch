@@ -60,7 +60,7 @@ def update_pets():
 
     query = 'UPDATE pets SET name = %s, adoption_status = %s, species = %s, breed = %s, birthday = %s,\
              age = %s, is_alive = %s WHERE petID = %s'
-    data = (petID, name, status, species, breed, birthday, age, alive)
+    data = (name, status, species, breed, birthday, age, alive, petID)
     cursor = db.get_db().cursor()
     r = cursor.execute(query, data)
     db.get_db().commit()

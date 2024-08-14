@@ -15,7 +15,7 @@ if st.button('Put a pet up for adoption',
              use_container_width=True):
   st.switch_page('pages/12_Manager_Adoption_Add.py')  
 
-if st.button('Edit pet information', 
+if st.button('Update pet information', 
              type='primary',
              use_container_width=True):
   st.switch_page('pages/16_Manager_Edit_Pet.py') 
