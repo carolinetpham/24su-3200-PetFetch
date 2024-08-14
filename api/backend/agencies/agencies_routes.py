@@ -46,6 +46,7 @@ def update_customer():
     db.get_db().commit()
     return 'customer updated!'
 
+# Get total number of adoptions per agency
 @agencies.route('/petagencies', methods=['GET'])
 def pet_agencies():
     current_app.logger.info('agencies_routes.py: GET /petagencies')
@@ -58,6 +59,28 @@ def pet_agencies():
         LEFT JOIN adoptions ad on pa.petID = ad.petID
       GROUP BY ag.agencyID
       ORDER BY totalAdoptions
+    '''
+    cursor.execute(theQuery)
+    theData = cursor.fetchall()
+
+    theResponse = make_response(theData)
+    theResponse.status_code = 200
+    theResponse.mimetype = 'application/json'
+
+    return theResponse
+
+# Get the number of most surrendered pets for each breed
+@agencies.route('/mostsurrendered', methods=['GET'])
+def most_surrendered():
+    current_app.logger.info('agencies_routes.py: GET /mostsurrendered')
+
+    cursor = db.get_db().cursor()
+    theQuery = '''
+     SELECT p.species, p.breed, COUNT(p.petID) AS amount_surrendered
+     FROM pets p
+         JOIN pet_agencies pa ON p.petID = pa.petID
+     GROUP BY p.species, p.breed
+     ORDER BY amount_surrendered DESC 
     '''
     cursor.execute(theQuery)
     theData = cursor.fetchall()
