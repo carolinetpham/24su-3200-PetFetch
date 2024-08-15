@@ -28,7 +28,7 @@ agencies_df = st.dataframe(agencies)
 
 geocoder = Nominatim(user_agent="your_app_name")
 
-zip_from = st.text_input(label = "zip: ")
+zip_from = st.text_input(label = "Zip: ")
 
 def get_location(zip_code):
     location = geocoder.geocode(zip_code)
