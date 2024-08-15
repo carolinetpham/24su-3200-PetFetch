@@ -46,7 +46,7 @@ if filtered_pets:
     contact_info = requests.get('http://api:4000/p/pets/contact').json()
 
     # Select a pet you would like to express interest in!
-    desired_pet = st.selectbox('Select you a pet you are interested in adopting!', filtered_pets)
+    desired_pet = st.selectbox('Select a pet you are interested in adopting!', filtered_pets)
 
     # filter contacts for those hosting a desired pet
     filtered_contacts = [item for item in contact_info if item.get('petID') == desired_pet['petID']]
