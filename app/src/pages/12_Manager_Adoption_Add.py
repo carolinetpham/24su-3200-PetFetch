@@ -24,7 +24,7 @@ with st.form("Input New Pet Information"):
 
     if submitted:
       data = {}
-      # data['petID'] = pet_id
+      data['petID'] = 0 # send dummy petID
       data['name'] = pet_name
       data['adoption_status'] = pet_status
       data['species'] = pet_species
@@ -34,5 +34,10 @@ with st.form("Input New Pet Information"):
       data['is_alive'] = pet_alive
       st.write(data)
 
-      requests.post('http://api:4000/p/pets', json=data) 
+      response = requests.post('http://api:4000/p/pets', json=data)
+
+      if response.status_code == 200:
+        st.success('Pet added successfully!')
+      else:
+        st.error('Failed to add pet.')   
 
