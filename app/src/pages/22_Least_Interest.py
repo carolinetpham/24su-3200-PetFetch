@@ -3,26 +3,30 @@ logger = logging.getLogger(__name__)
 import streamlit as st
 from modules.nav import SideBarLinks
 import requests
+import pandas as pd 
+from datetime import datetime
+
 
 st.set_page_config(layout = 'wide')
 
 SideBarLinks()
-
-st.title('Pets who have the least interest')
+st.title('Pet Stay Time')
 
 st.write('\n\n')
-st.write('## Model 1 Maintenance')
+st.write("### Hi Alex, here are pets that haven't been adopted")
 
-st.button("Train Model 01", 
-            type = 'primary', 
-            use_container_width=True)
+# Fetching the data from the api
+data = {} 
+date = st.date_input(
+    "Show Pets After This Date:",
+     value=datetime(2020,1,1),
+     max_value = datetime(2024,1,1),
+)
+if date:
+    data = requests.get(f'http://api:4000/p/pets/date/{date}').json()
+    st.dataframe(data)
+    
 
-st.button('Test Model 01', 
-            type = 'primary', 
-            use_container_width=True)
 
-if st.button('Model 1 - get predicted value for 10, 25', 
-             type = 'primary',
-             use_container_width=True):
-  results = requests.get('http://api:4000/c/prediction/10/25').json()
-  st.dataframe(results)
+
+

@@ -121,3 +121,22 @@ def delete_pet(petID):
     the_response.status_code = 200
     the_response.mimetype = 'text/plain'
     return the_response
+
+@pets.route('pets/date/<date>', methods=['Get'])
+def get_date_pets(date):
+    current_app.logger.info('pets_routes.py: GET /pets/date/<date>')
+    cursor = db.get_db().cursor()
+    current_app.logger.info(str(date))
+    cursor.execute("SELECT p.petID, p.name, p.species, p.breed, pa.entryDate, pa.exitDate, a.agencyName\
+                    FROM pets p\
+                    JOIN pet_agencies pa ON p.petID = pa.petID\
+                    JOIN agencies a ON pa.agencyID = a.agencyID\
+                    WHERE pa.exitDate IS NULL\
+                    AND pa.entryDate > %s",date)
+
+    theData = cursor.fetchall()
+    current_app.logger.info(theData)
+    the_response = make_response(theData)
+    the_response.status_code = 200
+    the_response.mimetype = 'application/json'
+    return the_response   
