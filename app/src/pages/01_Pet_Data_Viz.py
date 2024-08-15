@@ -41,13 +41,13 @@ if selected_age:
 st.write('Here are all the pets that fufill your criteria!')
 st.dataframe(filtered_pets)
 
-contacts = requests.get('http://api:4000/p/pets/contact').json()
+contact_info = requests.get('http://api:4000/p/pets/contact').json()
 
 # Select a pet you would like to express interest in!
 desired_pet = st.selectbox('Select you a pet you are interested in adopting!', filtered_pets)
 
 # filter contacts for those hosting a desired pet
-filtered_contacts = [item for item in contacts if item.get('petID') == desired_pet['petID']]
+filtered_contacts = [item for item in contact_info if item.get('petID') == desired_pet['petID']]
 
 # save important attributes
 name = [item.get('agencyName') for item in filtered_contacts]
@@ -60,11 +60,14 @@ zip = [item.get('zip') for item in filtered_contacts]
 
 # report contact information
 if desired_pet:
-    st.write(f'''
-    Here is their contact information:
-    - **Agency Name**: {name[0]}
-    - **Phone Number**: {phone[0]}
-    - **Email Address**: {email[0]}
-    - **Address**: {street[0]}, {city[0]} {state[0]} {zip[0]}
-    ''')
+    try:
+        st.write(f'''
+        Here is their contact information:
+        - **Agency Name**: {name[0]}
+        - **Phone Number**: {phone[0]}
+        - **Email Address**: {email[0]}
+        - **Address**: {street[0]}, {city[0]} {state[0]} {zip[0]}
+        ''')
+    except:
+        st.write('!!! That pet does not seem to be held at any agency currently, we are very sorry for the inconvienence.')
 
