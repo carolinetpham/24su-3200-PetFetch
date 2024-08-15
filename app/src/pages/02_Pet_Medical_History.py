@@ -17,10 +17,12 @@ SideBarLinks()
 st.header('Pet Medical History')
 
 # You can access the session state to make a more customized/personalized app experience
-st.write(f"### Hi, {st.session_state['first_name']}.")
+st.write(f"### Hi, {st.session_state['first_name']}!")
 
 # Import the petID you want to view the medical history for
-pet_id = st.number_input("Import the petID of the pet you would like the medical history of", step=1)
+st.write('\n\n')
+st.write("**Retrieve medical history**")
+pet_id = st.number_input("Enter petID: ", step=1)
 
 # Show the medical history for the selected pet
 if st.button('Submit'):
