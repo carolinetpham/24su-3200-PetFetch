@@ -23,15 +23,19 @@ pet_ids = [pet['petID'] for pet in pets]
 selected_pet_id = st.selectbox('Select Pet ID:', pet_ids)
 
 # Create a form
+entry_error = True
 with st.form(key='add_medical_history'):
-  entry = st.text_input(label='Entry')
+  entry = st.text_input(label='Entry: Describe the medical issue (2000 characters or less)')
+  if len(entry) > 2000:
+      st.write('**Sorry, your medical issue entry is too long.**')
+      entry_error = False
   date = st.date_input(label='Date')
 
   # Submit button
   submitted = st.form_submit_button('Submit')
 
 # If the form is submitted, send a POST request to the API with the form data
-if submitted:
+if submitted and entry_error:
     data = {}
     data['entry'] = entry
     data['date'] = date.isoformat()
@@ -42,4 +46,6 @@ if submitted:
         st.success('Medical entry added successfully!')
     else:
         st.error('Failed to add medical entry.')
+if entry_error == False:
+    st.write('Error: Form filled out incorrectly')
   
