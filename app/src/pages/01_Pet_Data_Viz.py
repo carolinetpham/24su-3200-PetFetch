@@ -38,36 +38,56 @@ if selected_age:
     filtered_pets = [item for item in filtered_pets if selected_age[0] <= int(item.get('age')) <= selected_age[1]]
 
 # Report the unfiltered/filtered dataframe
-st.write('Here are all the pets that fufill your criteria!')
-st.dataframe(filtered_pets)
+if filtered_pets:
+    st.write('Here are all the pets that fufill your criteria!')
+    st.dataframe(filtered_pets)
 
-contact_info = requests.get('http://api:4000/p/pets/contact').json()
+    # get the contact data
+    contact_info = requests.get('http://api:4000/p/pets/contact').json()
 
-# Select a pet you would like to express interest in!
-desired_pet = st.selectbox('Select you a pet you are interested in adopting!', filtered_pets)
+    # Select a pet you would like to express interest in!
+    desired_pet = st.selectbox('Select you a pet you are interested in adopting!', filtered_pets)
 
-# filter contacts for those hosting a desired pet
-filtered_contacts = [item for item in contact_info if item.get('petID') == desired_pet['petID']]
+    # filter contacts for those hosting a desired pet
+    filtered_contacts = [item for item in contact_info if item.get('petID') == desired_pet['petID']]
 
-# save important attributes
-name = [item.get('agencyName') for item in filtered_contacts]
-phone = [item.get('phone') for item in filtered_contacts]
-email = [item.get('email') for item in filtered_contacts]
-street = [item.get('street') for item in filtered_contacts]
-city = [item.get('city') for item in filtered_contacts]
-state = [item.get('state') for item in filtered_contacts]
-zip = [item.get('zip') for item in filtered_contacts]
+    # save important attributes
+    name = [item.get('agencyName') for item in filtered_contacts]
+    phone = [item.get('phone') for item in filtered_contacts]
+    email = [item.get('email') for item in filtered_contacts]
+    street = [item.get('street') for item in filtered_contacts]
+    city = [item.get('city') for item in filtered_contacts]
+    state = [item.get('state') for item in filtered_contacts]
+    zip = [item.get('zip') for item in filtered_contacts]
+    entryDate = [item.get('entryDate') for item in filtered_contacts]
 
-# report contact information
-if desired_pet:
+    # If the pet is held at an agency, report that agencies contacts
     try:
         st.write(f'''
-        Here is their contact information:
-        - **Agency Name**: {name[0]}
-        - **Phone Number**: {phone[0]}
-        - **Email Address**: {email[0]}
-        - **Address**: {street[0]}, {city[0]} {state[0]} {zip[0]}
-        ''')
+            Here is their current agencies' contact information:
+            - **Agency Name**: {name[0]}
+            - **Phone Number**: {phone[0]}
+            - **Email Address**: {email[0]}
+            - **Address**: {street[0]}, {city[0]} {state[0]} {zip[0]}
+            - **Date of Entry**: {entryDate[0]}
+            '''
+        )
     except:
-        st.write('!!! That pet does not seem to be held at any agency currently, we are very sorry for the inconvienence.')
+        st.write('Uh oh! That pet does not seem to currently be held at any agency :(')
 
+    # report contact information for each previous agency the pet was held at
+    if len(name) > 0:
+        st.write('Here is the contact information of any angecies they were previously held at:')
+    for i in range(len(name)):
+        if i > 0:
+            st.write(f''' 
+                {i}.
+                - **Agency Name**: {name[i]}
+                - **Phone Number**: {phone[i]}
+                - **Email Address**: {email[i]}
+                - **Address**: {street[i]}, {city[i]} {state[i]} {zip[i]}
+                - **Date of Entry**: {entryDate[i]}
+                '''
+            )
+else:
+    st.write('Unfortunately, no pets fit your criteria :(.')
