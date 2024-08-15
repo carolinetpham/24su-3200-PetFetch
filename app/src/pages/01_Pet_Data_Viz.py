@@ -86,7 +86,7 @@ if filtered_pets:
                 - **Phone Number**: {phone[i]}
                 - **Email Address**: {email[i]}
                 - **Address**: {street[i]}, {city[i]} {state[i]} {zip[i]}
-                - **Date of Entry**: {entryDate[i]}
+                - **Pets Date of Entry**: {entryDate[i]}
                 '''
             )
 else:
