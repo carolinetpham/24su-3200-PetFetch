@@ -101,8 +101,7 @@ def get_pet_contacts():
                    FROM pets \
                         NATURAL JOIN pet_agencies \
                         NATURAL JOIN agencies \
-                   ORDER BY entryDate DESC \
-                   LIMIT 1'
+                   ORDER BY entryDate DESC'
         )
 
     theData = cursor.fetchall()
