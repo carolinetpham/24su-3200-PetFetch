@@ -1,8 +1,16 @@
-# CS 3200 Summer 2 2024 Final Project
+# PetFetch - A Petalytics Application
+Final Project for CS 3200 - Introduction to Databases
 
 ## About
 
 This is BarkFontenot's Team project called PetFetch! PetFetch is a Petalytics application that allows you to view pets and agencies around the area. 
+
+## Team Members
+- Caroline Pham
+- Junxiang Lin
+- Haylie Pedersen
+- Andrew Nee
+- Bryce Mottershead
 
 ## Current Project Components
 
