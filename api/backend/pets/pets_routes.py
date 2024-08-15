@@ -97,7 +97,13 @@ def get_available_pets():
 def get_pet_contacts():
     current_app.logger.info('pets_routes.py: GET /pets/contact')
     cursor = db.get_db().cursor()
-    cursor.execute('SELECT * FROM pets NATURAL JOIN pet_agencies NATURAL JOIN agencies')
+    cursor.execute('SELECT * \
+                   FROM pets \
+                        NATURAL JOIN pet_agencies \
+                        NATURAL JOIN agencies \
+                   ORDER BY entryDate DESC \
+                   LIMIT 1'
+        )
 
     theData = cursor.fetchall()
     the_response = make_response(theData)
