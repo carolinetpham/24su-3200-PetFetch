@@ -44,7 +44,7 @@ def handleClick():
         distances = []
         for index, row in df.iterrows():
             distances.append(find_distance_between(zip_from, row['zip']))
-        df['distance'] = distances
+        df['distance (miles)'] = distances
         last_column = df.columns[-1]
         df = df[[last_column] + list(df.columns[:-1])]        
         st.session_state['agencies_df'] = df
