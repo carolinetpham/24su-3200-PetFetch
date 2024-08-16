@@ -13,7 +13,7 @@ SideBarLinks()
 st.title('Most commonly surrendered pets')
 
 st.write('\n\n')
-st.write('### Hi Alex, here you can see the animal breeds that are surrendered to resuces the most.')
+st.write('### Hi Alex, here you can see the animal breeds that are surrendered to rescues the most.')
 st.write('\n\n')
 st.write('#### View breeds by species')
 
