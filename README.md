@@ -44,8 +44,8 @@ When a user logs in, they assume a particular role, each representing a user per
 https://drive.google.com/file/d/1ifplvoxzd6ubxiZXfNzNjqlvsdGYvV9h/view
 
 ## Barkfontenot Members
-Caroline Pham
-Haylie Pedersen
-Andrew Nee
-Bryce Mottershead
-Junxiang Lin
+* Caroline Pham
+* Haylie Pedersen
+* Andrew Nee
+* Bryce Mottershead
+* Junxiang Lin
