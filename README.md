@@ -20,6 +20,7 @@ Currently, there are three major components:
 2. Set up the `.env` file in the `api` folder based on the `.env.template` file.
     - To set up `.env` file, please copy and paste the `.env.template` file and rename it `.env`.
 3. Start the docker containers using `docker compose up -d` in the terminal. 
+4. Access the application with `http://localhost:8501/` on your web browser. 
 
 ## Handling User Role Access and Control
 
