@@ -23,29 +23,6 @@ def get_agencies():
     the_response.mimetype = 'application/json'
     return the_response
 
-@agencies.route('/agencies', methods=['PUT'])
-def update_customer():
-    current_app.logger.info('PUT /agencies route')
-    pet_info = request.json
-    # current_app.logger.info(pet_info)
-    petID = pet_info['petID']
-    name = pet_info['name']
-    status = pet_info['adoption_status']
-    species = pet_info['species']
-    breed = pet_info['breed']
-    birthday = pet_info['birthday']
-    age = pet_info['age']
-    alive = pet_info['is_alive']
-
-
-    query = 'UPDATE agencies SET name = %s, adoption_status = %s, species = %s, breed = %s, birthday = %s,\
-             age = %s, is_alive = %s WHERE petID = %s'
-    data = (petID, name, status, species, breed, birthday, age, alive)
-    cursor = db.get_db().cursor()
-    r = cursor.execute(query, data)
-    db.get_db().commit()
-    return 'customer updated!'
-
 # Get total number of adoptions per agency
 @agencies.route('/petagencies', methods=['GET'])
 def pet_agencies():

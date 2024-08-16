@@ -43,6 +43,7 @@ def add_pet():
     db.get_db().commit()
     return 'pet added!'  
 
+# Update a pet in the DB
 @pets.route('/pets', methods=['PUT'])
 def update_pets():
     current_app.logger.info('PUT /pets route')
@@ -93,6 +94,7 @@ def get_available_pets():
     the_response.mimetype = 'application/json'
     return the_response
 
+# Gets contact information
 @pets.route('pets/contact', methods=['Get'])
 def get_pet_contacts():
     current_app.logger.info('pets_routes.py: GET /pets/contact')
@@ -110,6 +112,7 @@ def get_pet_contacts():
     the_response.mimetype = 'application/json'
     return the_response    
 
+# Delete a pet from the DB
 @pets.route('/pets/<petID>', methods=['DELETE'])
 def delete_pet(petID):
     current_app.logger.info('DELETE /pets/<petID> route')
@@ -122,6 +125,7 @@ def delete_pet(petID):
     the_response.mimetype = 'text/plain'
     return the_response
 
+# Gets all unadopted pets after a certain date
 @pets.route('pets/date/<date>', methods=['Get'])
 def get_date_pets(date):
     current_app.logger.info('pets_routes.py: GET /pets/date/<date>')

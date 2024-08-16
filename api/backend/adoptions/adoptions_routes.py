@@ -10,8 +10,8 @@ adoptions = Blueprint('adoptions', __name__)
 
 # Get all adoption info
 @adoptions.route('/adoptions', methods=['GET'])
-def med_pets():
-    current_app.logger.info('adoptions_routes.py: GET /med')
+def adoption_info():
+    current_app.logger.info('adoptions_routes.py: GET /adoptions')
     cursor = db.get_db().cursor()
     cursor.execute('SELECT name, petID, firstName, lastName, adopterID, email, phone, adoption_date,\
                     adoptionID, adoptionStatus FROM adopters NATURAL JOIN adoptions NATURAL JOIN pets')
